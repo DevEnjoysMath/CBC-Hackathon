@@ -1,0 +1,83 @@
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                                                    ┃
+┃  🧠 NEXUS                                                          ┃
+┃  Meeting Intelligence with Persistent Memory                      ┃
+┃                                                                    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📝 Meeting Transcript           ┃  ┃ 🎯 Team Context         ┃
+┃                                 ┃  ┃                         ┃
+┃ Mike: Sarah, how's the frontend ┃  ┃ Current Sprint: 23      ┃
+┃ refactor going?                 ┃  ┃                         ┃
+┃                                 ┃  ┃ Ongoing Projects:       ┃
+┃ Sarah: I'm blocked on the API   ┃  ┃ → Database optimization ┃
+┃ endpoints - they're returning   ┃  ┃ → Auth refactor         ┃
+┃ 500 errors.                     ┃  ┃ → API rate limiting     ┃
+┃                                 ┃  ┃                         ┃
+┃ Alex: I'm fixing the connection ┃  ┃ Memory Active:          ┃
+┃ pool issues we discussed last   ┃  ┃ ✓ Using context from    ┃
+┃ week.                           ┃  ┃   2 past meetings       ┃
+┃                                 ┃  ┃                         ┃
+┃ Mike: Didn't we fix that in     ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┃ Sprint 21?                      ┃  
+┃                                 ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ [  Watch NEXUS Analyze  ]      ┃  ┃ 📈 Efficiency Score     ┃
+┃                                 ┃  ┃                         ┃
+┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃  ┃       8/10              ┃
+┃                                 ┃  ┃   Meeting Quality       ┃
+┃ 🧠 Analyzing meeting with       ┃  ┃                         ┃
+┃    context from past meetings...┃  ┃ Good standup with clear ┃
+┃                                 ┃  ┃ blockers identified.    ┃
+┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┃                                 ┃
+┃ 📊 EXECUTIVE SUMMARY            ┃
+┃ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┃
+┃ Sprint 23 standup focused on    ┃
+┃ authentication refactor and     ┃
+┃ database issues. Sarah is       ┃
+┃ blocked by API errors...        ┃
+┃                                 ┃
+┃ ✅ ACTION ITEMS                 ┃
+┃ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┃
+┃ 👤 Alex                         ┃
+┃ Fix database connection pool    ┃
+┃ 🔴 HIGH | 📅 ASAP              ┃
+┃ 💡 Blocking frontend work       ┃
+┃                                 ┃
+┃ 👤 Sarah                        ┃
+┃ Document API errors             ┃
+┃ 🟡 MEDIUM | 📅 Next standup    ┃
+┃                                 ┃
+┃ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┃
+┃ 🔗 CONNECTIONS TO PAST ⭐       ┃
+┃ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┃
+┃                                 ┃
+┃ 🔗 Database Connection Issues   ┃
+┃ Referenced: Sprint 22 (Nov 26)  ┃
+┃                                 ┃
+┃ 📍 This is the 3rd sprint       ┃
+┃ discussing connection pool      ┃
+┃ issues. Suggests a SYSTEMIC     ┃
+┃ ARCHITECTURE PROBLEM.           ┃
+┃                                 ┃
+┃ 🏷️  RECURRING ISSUE             ┃
+┃                                 ┃
+┃ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┃
+┃                                 ┃
+┃ 🔗 Sarah's API Blocker          ┃
+┃ Referenced: Frontend Sync       ┃
+┃                                 ┃
+┃ 📍 Sarah mentioned the same     ┃
+┃ issue 4 days ago. The blocker   ┃
+┃ persists.                       ┃
+┃                                 ┃
+┃ 🏷️  RECURRING ISSUE             ┃
+┃                                 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+THIS IS WHAT THE JUDGES SEE! 🏆
+
+The "Connections to Past Meetings" section is YOUR SECRET WEAPON.
+No other meeting tool does this. This is what makes you UNIQUE.
+

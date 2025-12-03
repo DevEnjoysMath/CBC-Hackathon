@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header .tagline {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .summary-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .action-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .action-item:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .action-item .assignee {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .action-item .task {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .action-item .meta {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .priority {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .priority-high {
+            background: #ff4444;
+            color: white;
+        }
+
+        .priority-medium {
+            background: #ffaa00;
+            color: white;
+        }
+
+        .connection-item {
+            background: #fff9e6;
+            border-left: 4px solid #ffaa00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .connection-item .topic {
+            font-weight: bold;
+            color: #ff8800;
+            margin-bottom: 5px;
+        }
+
+        .pattern-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .pattern-recurring_issue {
+            background: #ff4444;
+            color: white;
+        }
+
+        .context-sidebar {
+            position: sticky;
+            top: 20px;
+        }
+
+        .context-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .context-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .efficiency-score {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 10px;
+        }
+
+        .efficiency-score .score {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .decision {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            color: #2e7d32;
+        }
+
+        .highlight {
+            background: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 NEXUS</h1>
+            <p class="tagline">Meeting Intelligence with Persistent Memory</p>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>📝 Meeting Transcript</h2>
+
+                <div class="input-section">
+                    <textarea id="transcript" readonly>Mike: Alright team, let's start our standup. Sarah, how's the frontend refactor going?
+
+Sarah: I'm making good progress on the authentication UI. I should have the login page done by tomorrow. But I'm blocked on the API endpoints - they're still returning 500 errors.
+
+Alex: Yeah, sorry about that. The database migration didn't go smoothly yesterday. I'm working on fixing the connection pool issues we discussed last week.
+
+Mike: Wait, didn't we already fix connection pool issues in Sprint 21?
+
+Alex: That was for the read replicas. This is for the main database. Different issue.
+
+Jamie: I've noticed the response times are way higher than last sprint. Is that related?
+
+Alex: Probably. Once I fix the connection pool, it should improve.
+
+Mike: Okay. Sarah, can you document the API errors you're seeing? Alex, let's make the database fix priority one.
+
+Sarah: Will do. I'll also start working on the password reset flow while I wait.
+
+Mike: Good. Jamie, anything blocking you?
+
+Jamie: Nope, I'm writing tests for the new rate limiting feature. Should be done by Friday.
+
+Mike: Perfect. Let's regroup tomorrow. Thanks everyone!</textarea>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="runDemo()">
+                            🚀 Watch NEXUS Analyze This Meeting
+                        </button>
+                    </div>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>🧠 Analyzing meeting with context from 2 past meetings...</p>
+                    <p style="margin-top: 10px; color: #666;">Loading team context, detecting patterns, connecting to history...</p>
+                </div>
+
+                <div class="results" id="results">
+                    <div class="summary-box">
+                        <h3>📊 Executive Summary</h3>
+                        <p>Sprint 23 standup focused on authentication refactor and database issues. Sarah is blocked by API errors related to Alex's ongoing database connection pool fixes. Mike identified this as a <span class="highlight">recurring issue from Sprint 21</span>, though Alex clarified it's a different component. Team prioritized database stability and documented blockers.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>✅ Action Items</h3>
+                        <div class="action-item">
+                            <div class="assignee">👤 Alex</div>
+                            <div class="task">Fix database connection pool issues for main database</div>
+                            <div class="meta">
+                                <span class="priority priority-high">HIGH</span>
+                                <span>📅 ASAP (blocking Sarah)</span>
+                            </div>
+                            <div style="margin-top: 8px; font-size: 13px; color: #666;">💡 Blocking frontend work and affecting response times</div>
+                        </div>
+                        <div class="action-item">
+                            <div class="assignee">👤 Sarah</div>
+                            <div class="task">Document API errors for backend team</div>
+                            <div class="meta">
+                                <span class="priority priority-medium">MEDIUM</span>
+                                <span>📅 Before next standup</span>
+                            </div>
+                            <div style="margin-top: 8px; font-size: 13px; color: #666;">💡 Will help Alex debug the issues faster</div>
+                        </div>
+                        <div class="action-item">
+                            <div class="assignee">👤 Jamie</div>
+                            <div class="task">Complete tests for rate limiting feature</div>
+                            <div class="meta">
+                                <span class="priority priority-medium">MEDIUM</span>
+                                <span>📅 Friday</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>💡 Key Decisions</h3>
+                        <div class="decision">Database connection pool fix is now priority one</div>
+                        <div class="decision">Sarah will work on password reset flow while waiting for API fixes</div>
+                        <div class="decision">Team will regroup tomorrow for status update</div>
+                    </div>
+
+                    <div class="section">
+                        <h3>🔗 Connections to Past Meetings <span style="color: #ff8800;">(⭐ UNIQUE FEATURE!)</span></h3>
+                        <div class="connection-item">
+                            <div class="topic">🔗 Database Connection Pool Issues</div>
+                            <div style="color: #666; font-size: 14px; margin-bottom: 5px;">Referenced: Sprint 22 Planning (Nov 26)</div>
+                            <div style="color: #666; font-size: 14px;">📍 <strong>Insight:</strong> This is the 3rd sprint discussing connection pool issues. Sprint 21 fixed read replicas, Sprint 22 identified main database issues, Sprint 23 still working on main database. This suggests a systemic architecture problem that may need a comprehensive review.</div>
+                            <span class="pattern-badge pattern-recurring_issue">RECURRING ISSUE</span>
+                        </div>
+                        <div class="connection-item">
+                            <div class="topic">🔗 Sarah's API Blocker</div>
+                            <div style="color: #666; font-size: 14px; margin-bottom: 5px;">Referenced: Frontend Sync (Nov 29)</div>
+                            <div style="color: #666; font-size: 14px;">📍 <strong>Insight:</strong> Sarah mentioned the same API blocking issue 4 days ago. The blocker persists, which may impact sprint velocity and the authentication refactor timeline.</div>
+                            <span class="pattern-badge pattern-recurring_issue">RECURRING ISSUE</span>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>⚠️ Unspoken Concerns</h3>
+                        <ul style="padding-left: 20px;">
+                            <li style="margin-bottom: 8px; color: #666;">The recurring connection pool issues across multiple sprints suggest a deeper architectural problem that quick fixes aren't resolving</li>
+                            <li style="margin-bottom: 8px; color: #666;">Sarah has been blocked for 4+ days, which may affect the authentication refactor deadline</li>
+                            <li style="margin-bottom: 8px; color: #666;">No discussion of rollback plans if the database fix fails</li>
+                            <li style="margin-bottom: 8px; color: #666;">Jamie's observation about response times indicates the issue may be affecting production users</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="context-sidebar">
+                <div class="card">
+                    <h2>🎯 Team Context</h2>
+                    <div class="context-box">
+                        <h4>Current Sprint</h4>
+                        <p style="color: #333; font-weight: bold;">Sprint 23</p>
+                    </div>
+
+                    <div class="context-box">
+                        <h4>Ongoing Projects</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 5px 0; color: #666; font-size: 13px;">→ Database optimization</li>
+                            <li style="padding: 5px 0; color: #666; font-size: 13px;">→ Auth refactor</li>
+                            <li style="padding: 5px 0; color: #666; font-size: 13px;">→ API rate limiting</li>
+                        </ul>
+                    </div>
+
+                    <div class="context-box">
+                        <h4>Memory Active</h4>
+                        <p style="color: #667eea; font-weight: bold;">✓ Using context from <span id="pastMeetingsCount">2</span> past meetings</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 20px;">
+                    <h2>📈 Efficiency Score</h2>
+                    <div class="efficiency-score">
+                        <div class="score" id="efficiencyScore">8/10</div>
+                        <div style="color: #666; margin-top: 10px;">Meeting Quality</div>
+                        <p id="efficiencyReason" style="margin-top: 15px; color: #666; font-size: 13px;">Good standup with clear blockers identified. Could improve by setting specific follow-up times and discussing mitigation strategies for recurring issues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runDemo() {
+            // Show loading
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+
+            // Simulate analysis delay
+            setTimeout(() => {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('results').classList.add('active');
+
+                // Scroll to results
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 3000);
+        }
+
+        // Auto-run demo on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                runDemo();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
