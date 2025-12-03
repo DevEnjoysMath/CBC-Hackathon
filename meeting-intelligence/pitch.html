@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        h1 {
+            font-size: 5em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 3em;
+            margin-bottom: 40px;
+        }
+
+        .tagline {
+            font-size: 2em;
+            color: #aaa;
+            margin-bottom: 60px;
+        }
+
+        .content {
+            max-width: 1200px;
+            font-size: 1.5em;
+            line-height: 1.8;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .competitor {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .competitor h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .competitor.nexus {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .checkmark {
+            color: #4caf50;
+            font-size: 1.5em;
+        }
+
+        .xmark {
+            color: #ff4444;
+            font-size: 1.5em;
+        }
+
+        .architecture {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            font-size: 1.8em;
+            margin-top: 60px;
+        }
+
+        .architecture-box {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .arrow {
+            font-size: 3em;
+            color: #667eea;
+        }
+
+        .value-prop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .value-box {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: left;
+        }
+
+        .value-box h3 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .value-box p {
+            font-size: 1.3em;
+            line-height: 1.6;
+        }
+
+        .big-number {
+            font-size: 6em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .feature .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <h1>🧠 NEXUS</h1>
+        <p class="tagline">Meeting Intelligence with Persistent Memory</p>
+        <p style="font-size: 1.5em; color: #888;">The first meeting assistant that actually remembers</p>
+    </div>
+
+    <!-- Slide 2: The Problem -->
+    <div class="slide">
+        <h2>The Problem</h2>
+        <div class="content">
+            <p style="font-size: 2em; margin-bottom: 40px;">💭 "Didn't we already discuss this last week?"</p>
+            <div class="value-prop" style="margin-top: 80px;">
+                <div class="value-box">
+                    <p>❌ Meetings happen in isolation</p>
+                </div>
+                <div class="value-box">
+                    <p>❌ Context disappears between meetings</p>
+                </div>
+                <div class="value-box">
+                    <p>❌ Recurring issues never get flagged</p>
+                </div>
+                <div class="value-box">
+                    <p>❌ Knowledge lost when people leave</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Current Solutions -->
+    <div class="slide">
+        <h2>Current Solutions</h2>
+        <div class="comparison">
+            <div class="competitor">
+                <h3>Otter.ai</h3>
+                <p style="margin-top: 20px;">Transcribes meetings</p>
+                <p style="margin-top: 10px; color: #888;">No memory between meetings</p>
+            </div>
+            <div class="competitor">
+                <h3>Fireflies</h3>
+                <p style="margin-top: 20px;">Transcribes meetings</p>
+                <p style="margin-top: 10px; color: #888;">No context awareness</p>
+            </div>
+            <div class="competitor">
+                <h3>Manual Notes</h3>
+                <p style="margin-top: 20px;">Time-consuming</p>
+                <p style="margin-top: 10px; color: #888;">Error-prone, lost easily</p>
+            </div>
+        </div>
+        <p style="margin-top: 80px; font-size: 2em;">They all have the <span style="color: #ff4444;">memory of a goldfish 🐠</span></p>
+    </div>
+
+    <!-- Slide 4: Our Solution -->
+    <div class="slide">
+        <h2>Our Solution: NEXUS</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="icon">📚</div>
+                <h3>Persistent Memory</h3>
+                <p>Connects discussions across all meetings</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🔍</div>
+                <h3>Pattern Detection</h3>
+                <p>Identifies recurring issues automatically</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🎯</div>
+                <h3>Context-Aware</h3>
+                <p>Understands your team and projects</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🔗</div>
+                <h3>Decision Linking</h3>
+                <p>Connects today's decisions to past ones</p>
+            </div>
+            <div class="feature">
+                <div class="icon">⚠️</div>
+                <h3>Smart Alerts</h3>
+                <p>Flags contradictions and conflicts</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🧠</div>
+                <h3>Reads Between Lines</h3>
+                <p>Catches unspoken concerns</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: How It Works -->
+    <div class="slide">
+        <h2>How It Works</h2>
+        <div class="architecture">
+            <div class="architecture-box">🎤 Meeting happens (Zoom/Meet/Manual)</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-box">📝 Whisper API transcribes audio</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-box">🧠 NEXUS loads context (past meetings + team info)</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-box">🤖 Claude Sonnet 4 analyzes with full memory</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-box">✨ Smart output: Actions + Connections + Insights</div>
+        </div>
+    </div>
+
+    <!-- Slide 6: The Unique Feature -->
+    <div class="slide">
+        <h2>Our Secret Weapon</h2>
+        <div class="content">
+            <div class="big-number" style="margin-top: 60px;">🔗</div>
+            <h2 style="margin-top: 40px;">Connections to Past Meetings</h2>
+            <p style="font-size: 1.8em; margin-top: 40px; line-height: 1.6;">
+                "Alex is working on database connection issues... but wait, we fixed this in Sprint 21?"
+            </p>
+            <p style="font-size: 1.8em; margin-top: 40px; color: #667eea;">
+                ✨ NEXUS automatically flags this as a RECURRING ISSUE
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Business Value -->
+    <div class="slide">
+        <h2>Business Value</h2>
+        <div class="value-prop">
+            <div class="value-box">
+                <h3>⏰ Time Savings</h3>
+                <p class="big-number">10 hrs</p>
+                <p>saved per week (10-person team)</p>
+            </div>
+            <div class="value-box">
+                <h3>💰 Cost Savings</h3>
+                <p class="big-number">$50K</p>
+                <p>per year in productivity</p>
+            </div>
+            <div class="value-box">
+                <h3>📈 ROI</h3>
+                <p class="big-number">1st</p>
+                <p>meeting breaks even</p>
+            </div>
+            <div class="value-box">
+                <h3>🧠 Knowledge</h3>
+                <p class="big-number">∞</p>
+                <p>Institutional memory preserved</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Comparison Table -->
+    <div class="slide">
+        <h2>NEXUS vs. Competitors</h2>
+        <table style="width: 100%; margin-top: 60px; font-size: 1.3em; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #1a1a1a;">
+                    <th style="padding: 20px; text-align: left; border: 2px solid #333;">Feature</th>
+                    <th style="padding: 20px; border: 2px solid #333;">Otter.ai</th>
+                    <th style="padding: 20px; border: 2px solid #333;">Fireflies</th>
+                    <th style="padding: 20px; border: 2px solid #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">NEXUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 20px; border: 2px solid #333;">Transcription</td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                </tr>
+                <tr style="background: #0a0a0a;">
+                    <td style="padding: 20px; border: 2px solid #333;">Action Items</td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                </tr>
+                <tr>
+                    <td style="padding: 20px; border: 2px solid #333;"><strong>Persistent Memory</strong></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                </tr>
+                <tr style="background: #0a0a0a;">
+                    <td style="padding: 20px; border: 2px solid #333;"><strong>Connects Past Meetings</strong></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                </tr>
+                <tr>
+                    <td style="padding: 20px; border: 2px solid #333;"><strong>Pattern Detection</strong></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                </tr>
+                <tr style="background: #0a0a0a;">
+                    <td style="padding: 20px; border: 2px solid #333;"><strong>Team Context Awareness</strong></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="xmark">❌</span></td>
+                    <td style="padding: 20px; border: 2px solid #333;"><span class="checkmark">✅</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Slide 9: Tech Stack -->
+    <div class="slide">
+        <h2>Tech Stack</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="icon">🐍</div>
+                <h3>Flask Backend</h3>
+                <p>Fast, scalable Python server</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🤖</div>
+                <h3>Claude Sonnet 4</h3>
+                <p>State-of-the-art AI reasoning</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🎤</div>
+                <h3>Whisper API</h3>
+                <p>Best-in-class transcription</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🎨</div>
+                <h3>Modern Frontend</h3>
+                <p>Clean, intuitive interface</p>
+            </div>
+            <div class="feature">
+                <div class="icon">⚡</div>
+                <h3>Real-time Analysis</h3>
+                <p>Results in seconds</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🔒</div>
+                <h3>Secure by Design</h3>
+                <p>Enterprise-grade privacy</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Call to Action -->
+    <div class="slide">
+        <h1>🧠 NEXUS</h1>
+        <div class="content" style="margin-top: 80px;">
+            <p style="font-size: 2.5em; line-height: 1.6;">
+                Companies don't need better notes.<br>
+                They need <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">institutional memory</span>.
+            </p>
+            <p style="font-size: 2em; margin-top: 80px; color: #888;">
+                That's NEXUS.
+            </p>
+        </div>
+    </div>
+
+    <div class="slide-number" id="slideNumber">1 / 10</div>
+
+    <div class="controls">
+        <button onclick="previousSlide()">← Previous</button>
+        <button onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slideNumber').textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+    </script>
+</body>
+</html>
